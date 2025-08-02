@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Winter Blanket Drive - Kurigram",
+    "image": "https://i.ibb.co/Q7N6srWX/card1.png",
+    "description": "Help us provide warm blankets to underprivileged families in Kurigram during the freezing winter nights.",
+    "status": "Active",
+    "contactinfo": "01711-123456",
+    "division": "Rangpur"
+  },
+  {
+    "id": 2,
+    "title": "Sweater for Every Child - Sylhet",
+    "image": "https://i.ibb.co/YFQT916q/card2.png",
+    "description": "Donate to keep school children warm in remote villages of Sylhet by sponsoring winter sweaters.",
+    "status": "Active",
+    "contactinfo": "01722-654321",
+    "division": "Sylhet"
+  },
+  {
+    "id": 3,
+    "title": "Coat Drive for Dhaka Slums",
+    "image": "https://i.ibb.co/Y4PgsHC4/card3.png",
+    "description": "Thousands in Dhaka’s urban slums face harsh winters. Your donation can make a big difference.",
+    "status": "Active",
+    "contactinfo": "01811-998877",
+    "division": "Dhaka"
+  },
+  {
+    "id": 4,
+    "title": "Warm Clothes for Elderly - Barisal",
+    "image": "https://i.ibb.co/DHZxh20v/card4.png",
+    "description": "Support our campaign to distribute shawls and warm clothes to elderly people in Barisal villages.",
+    "status": "Active",
+    "contactinfo": "01633-445566",
+    "division": "Barisal"
+  },
+  {
+    "id": 5,
+    "title": "Chattogram Street Kids Winter Aid",
+    "image": "https://i.ibb.co/kgQBz1NX/card5.png",
+    "description": "Street children in Chattogram need your help to stay warm this winter. Donate warm clothes and blankets.",
+    "status": "Active",
+    "contactinfo": "01555-112233",
+    "division": "Chattogram"
+  },
+  {
+    "id": 6,
+    "title": "Blankets for Villagers - Rajshahi",
+    "image": "https://i.ibb.co/yB41CQR6/card6.png",
+    "description": "Your contribution will help rural communities in Rajshahi get essential winter protection.",
+    "status": "Active",
+    "contactinfo": "01999-334455",
+    "division": "Rajshahi"
+  },
+  {
+    "id": 7,
+    "title": "Winter Supplies for School Dorms - Mymensingh",
+    "image": "https://i.ibb.co/CKyn4X4D/card7.png",
+    "description": "Help provide warm bedding and clothing to students in remote dormitories of Mymensingh.",
+    "status": "Active",
+    "contactinfo": "01744-776655",
+    "division": "Mymensingh"
+  },
+  {
+    "id": 8,
+    "title": "Shoes and Socks for Cold Feet - Khulna",
+    "image": "https://i.ibb.co/rfcrrPnD/card8.png",
+    "description": "Keep little feet warm in Khulna! Support our campaign to distribute shoes and wool socks.",
+    "status": "Active",
+    "contactinfo": "01411-889900",
+    "division": "Khulna"
+  }
+]

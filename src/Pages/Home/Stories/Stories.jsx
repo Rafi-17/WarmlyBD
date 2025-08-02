@@ -1,63 +1,67 @@
 import React from "react";
+import img1 from "../../../assets/Stories/1.png"
+import img2 from "../../../assets/Stories/2.png"
+import img3 from "../../../assets/Stories/3.png"
 
 const Stories = () => {
   return (
-    <section className="px-4 md:px-16 py-16 bg-white/70 backdrop-blur-md">
-      <h2 className="text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-sky-600 to-blue-500 bg-clip-text text-transparent drop-shadow-sm mb-10">
+    <section className="px-4 md:px-16 py-16">
+      <h2 className="text-3xl pb-3 md:text-4xl font-extrabold text-center bg-gradient-to-r from-sky-500 to-blue-700 bg-clip-text text-transparent mb-4">
         Inspiring Stories
       </h2>
+      <p className="text-center text-sky-900 text-sm mb-10 max-w-2xl mx-auto">
+        Read how WarmlyBD is making a difference — from volunteers to those
+        receiving winter aid.
+      </p>
 
-      <div className="grid md:grid-cols-3 gap-6">
-        {/* Story Card 1 */}
-        <div className="bg-white rounded-xl shadow-md p-6 border border-cyan-100 hover:shadow-lg transition duration-300">
+      <div className="grid gap-6 md:grid-cols-3">
+        {/* Card 1 */}
+        <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-xl p-6 flex flex-col justify-between">
           <img
-            src="/images/story1.jpg"
-            alt="Story 1"
+            src={img1}
+            alt="Ayesha, Rajshahi"
             className="w-full h-48 object-cover rounded-md mb-4"
           />
-          <p className="text-gray-700 italic mb-2">
-            “Thanks to WarmlyBD, my children finally had warm clothes during
-            winter.”
+          <p className="text-gray-700 italic mb-4">
+            “Last winter was tough, but the coat I received from WarmlyBD helped
+            me survive the cold nights.”
           </p>
-          <span className="text-sm text-blue-500 font-medium">
-            — A mother from Rangpur
-          </span>
+          <p className="text-sm text-blue-500 font-medium">
+            — Ayesha, Rajshahi
+          </p>
         </div>
 
-        {/* Story Card 2 */}
-        <div className="bg-white rounded-xl shadow-md p-6 border border-cyan-100 hover:shadow-lg transition duration-300">
+        {/* Card 2 */}
+        <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-xl p-6 flex flex-col justify-between">
           <img
-            src="/images/story2.jpg"
-            alt="Story 2"
+            src={img2}
+            alt="Arman, Dhaka"
             className="w-full h-48 object-cover rounded-md mb-4"
           />
-          <p className="text-gray-700 italic mb-2">
-            “I was shivering at night — someone brought me a jacket through this
-            amazing initiative.”
+          <p className="text-gray-700 italic mb-4">
+            “Volunteering with WarmlyBD opened my eyes to how much a simple act
+            of kindness can change lives.”
           </p>
-          <span className="text-sm text-blue-500 font-medium">
-            — Elderly man, Dhaka streets
-          </span>
+          <p className="text-sm text-blue-500 font-medium">— Arman, Dhaka</p>
         </div>
 
-        {/* Story Card 3 */}
-        <div className="bg-white rounded-xl shadow-md p-6 border border-cyan-100 hover:shadow-lg transition duration-300">
+        {/* Card 3 */}
+        <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-xl p-6 flex flex-col justify-between">
           <img
-            src="/images/story3.jpg"
-            alt="Story 3"
+            src={img3}
+            alt="Rahi, Sylhet"
             className="w-full h-48 object-cover rounded-md mb-4"
           />
-          <p className="text-gray-700 italic mb-2">
-            “I thought no one cared. But WarmlyBD volunteers proved me wrong.”
+          <p className="text-gray-700 italic mb-4">
+            “I didn't expect anyone to care. But WarmlyBD came with warm clothes
+            just when I needed them most.”
           </p>
-          <span className="text-sm text-blue-500 font-medium">
-            — A student in Sylhet
-          </span>
+          <p className="text-sm text-blue-500 font-medium">— Shahi, Sylhet</p>
         </div>
       </div>
 
-      <div className="text-center mt-10">
-        <button className="bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold px-6 py-2 rounded-md shadow-md transition hover:scale-105">
+      <div className="mt-10 text-center">
+        <button className="bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold px-6 py-2 rounded-md shadow-md transition duration-300 hover:scale-105">
           Read More Stories
         </button>
       </div>

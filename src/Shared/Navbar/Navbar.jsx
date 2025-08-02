@@ -18,9 +18,9 @@ const Navbar = () => {
   }
     const navLinks=<>
         <li><NavLink to="/" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-sky-500  font-bold text-base lg:text-lg" : ""}>Home</NavLink></li>
-        <li><NavLink to="/donation" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-sky-500 font-bold text-lg" : ""}>Donation Campaigns</NavLink></li>
-        <li><NavLink to="/help" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-sky-500 font-bold text-lg" : ""}>How to Help</NavLink></li>
-        <li><NavLink to="/dashboard" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-sky-500 font-bold text-lg" : ""}>Dashboard</NavLink></li>
+        <li><NavLink to="/donationCampaigns" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-sky-500 font-bold text-base lg:text-lg" : ""}>Donation Campaigns</NavLink></li>
+        <li><NavLink to="/help" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-sky-500 font-bold text-base lg:text-lg" : ""}>How to Help</NavLink></li>
+        <li><NavLink to="/dashboard" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-sky-500 font-bold text-base lg:text-lg" : ""}>Dashboard</NavLink></li>
     </>
     return (
     <div className="navbar bg-sky-100 shadow-md">
