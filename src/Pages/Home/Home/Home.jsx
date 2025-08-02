@@ -1,9 +1,14 @@
 import React from 'react';
+import Banner from '../Banner/Banner';
+import About from '../About/About';
+import Stories from '../Stories/Stories';
 
 const Home = () => {
     return (
-        <div>
-            <h1 className='text-5xl'>This is home</h1>
+        <div className='bg-gradient-to-b from-blue-50 to-cyan-100'>
+            <Banner></Banner>
+            <About></About>
+            <Stories></Stories>
         </div>
     );
 };

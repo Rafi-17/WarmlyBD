@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import loginBg from '../../assets/Login/loginBg.png';
 import { FcGoogle } from "react-icons/fc";
 import { motion } from "motion/react"
 import { Link } from "react-router-dom";
+import { TiEye } from "react-icons/ti";
+import { AiFillEyeInvisible } from "react-icons/ai";
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Register = () => {
+  const [show,setShow] = useState(false);
+  const [typed, setTyped]=useState("");
+  const {createUser, googleLogin, updateUserProfile, setUser}= useContext(AuthContext);
 
     const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,7 +19,29 @@ const Register = () => {
     const photo = e.target.photo.value;
     const password = e.target.password.value;
     console.log(name,email,photo,password);
+    createUser(email, password)
+    .then(result=>{
+      setUser(result.user);
+      updateUserProfile({
+        displayName: name,
+        photoURL: photo
+      })
+      .then(()=>console.log("Profile Updated"))
+      .catch(error=>console.log("Error",error.message))
+      e.target.reset();
+    })
+    .catch(error=>{
+      console.log("Error", error.message);
+    })
   };
+  const handlePassword=e=>{
+    setTyped(e.target.value)
+  }
+  const handleGoogleLogin=()=>{
+    googleLogin()
+    .then(result=>console.log(result.user))
+    .catch(error=>console.log("Error",error.message))
+  }
 
     return (
         <div className="relative min-h-[calc(100vh-64px)] bg-gradient-to-b from-blue-50 to-cyan-100 flex flex-col items-center px-6 sm:px-12 pt-8 lg:pt-10 overflow-hidden">
@@ -38,7 +66,7 @@ const Register = () => {
         <div className="rounded-lg w-full max-w-[400px] py-16 px-4 z-10 bg-white/80 backdrop-blur-md border border-blue-200 shadow-lg flex flex-col items-center">
         <form
         onSubmit={handleSubmit}
-        className="text-center"
+        className="text-center relative"
       >
         <input
           className="mb-4 w-full max-w-[300px] py-2 rounded-lg bg-gradient-to-r from-white to-cyan-100 border border-sky-300 placeholder:text-gray-500 px-4 placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-500 transition"
@@ -65,11 +93,13 @@ const Register = () => {
           aria-label="Photo URL"
         />
         <input
+          onChange={handlePassword}
           className="mb-4 w-full max-w-[300px] py-2 rounded-lg bg-gradient-to-r from-white to-cyan-100 border border-sky-300 placeholder:text-gray-500 px-4 placeholder:text-sm"
           placeholder="Password"
           name="password"
-          type="password"
+          type={`${show?"text" : "password"}`}
         />
+        {typed && <span onClick={()=>setShow(!show)} className='absolute cursor-pointer right-5 md:right-12 bottom-16 text-lg text-gray-700'>{show?<AiFillEyeInvisible />: <TiEye />}</span>}
         <input
           className="bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-cyan-500 hover:to-blue-500 text-white shadow-md transition duration-300 px-8 rounded-md py-2 cursor-pointer text-sm font-semibold"
           type="submit"
@@ -82,7 +112,7 @@ const Register = () => {
         <p className="font-semibold text-sm mb-4 text-gray-700">or continue with</p>
       </div>
         <div className="flex gap-3 text-gray-500 text-sm font-semibold w-full max-w-[300px]">
-            <button className="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-white text-gray-700 border border-gray-300 hover:bg-gray-100 shadow"><FcGoogle  className="text-lg"/>Google</button>
+            <button onClick={handleGoogleLogin} className="flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-white text-gray-700 border border-gray-300 hover:bg-gray-100 shadow"><FcGoogle  className="text-lg"/>Google</button>
         </div>
         <div className="w-full max-w-[300px]">
             <p className="text-sm text-gray-600 mt-6">Already have account? <Link to={"/login"} className="text-blue-600 font-semibold text-base underline hover:text-blue-800 transition">Login</Link></p>

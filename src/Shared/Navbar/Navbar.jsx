@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from '../../assets/Navbar/logo.png'
 import { Link, NavLink } from "react-router-dom";
 import CommonButton from "../../components/CommonButton/CommonButton";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
+  const {logoutUser, user} = useContext(AuthContext);
+
+  const handleLogout=()=>{
+    logoutUser()
+    .then(()=>{
+      console.log("Logged Out Successfully!");
+    })
+    .catch(error=>{
+      console.log(error.message);
+    })
+  }
     const navLinks=<>
         <li><NavLink to="/" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-sky-500  font-bold text-base lg:text-lg" : ""}>Home</NavLink></li>
         <li><NavLink to="/donation" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-sky-500 font-bold text-lg" : ""}>Donation Campaigns</NavLink></li>
@@ -53,7 +65,10 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to={"/login"}><CommonButton>Log In</CommonButton></Link>
+        {user ?<>
+        <img className="w-10 mr-2 rounded-full" src={user.photoURL} alt="" />
+        <Link onClick={handleLogout}><CommonButton>Log Out</CommonButton> </Link> 
+        </> : <Link to={"/login"}><CommonButton>Log In</CommonButton></Link> }
       </div>
     </div>
   );
