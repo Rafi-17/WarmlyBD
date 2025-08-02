@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { TiEye } from "react-icons/ti";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const {loginUser, googleLogin}=useContext(AuthContext);
@@ -22,6 +23,12 @@ const Login = () => {
     .then(result=>{
       console.log(result.user);
       e.target.reset();
+      Swal.fire({
+        title: "Success!",
+        text: "Logged in Successfully",
+        icon: "success",
+        confirmButtonText: "Ok"
+      });
     })
     .catch(error=>{
       console.log("Error", error.message);

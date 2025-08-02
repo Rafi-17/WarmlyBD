@@ -1,5 +1,6 @@
 import React from "react";
 import bannerImg from '../../../assets/Banner/bannerImg.png'
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -13,9 +14,9 @@ const Banner = () => {
           Donate your unused winter clothes to help those in need across
           Bangladesh.
         </p>
-        <button className="bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold px-6 py-3 rounded-md shadow-md transition duration-300 hover:scale-105">
+        <Link to={"/donationCampaigns"}><button className="bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold px-6 py-3 rounded-md shadow-md transition duration-300 hover:scale-105">
           Donate Now
-        </button>
+        </button></Link>
       </div>
 
       {/* Right side: Banner Image */}
