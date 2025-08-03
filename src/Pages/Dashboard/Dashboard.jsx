@@ -9,7 +9,7 @@ const Dashboard = () => {
   return (
     <div className="bg-gradient-to-b from-blue-50 to-cyan-100 flex items-start mt-3 mb-10 md:my-14 lg:my-20 justify-center p-4">
       <div className=" backdrop-blur-md rounded-xl shadow-xl p-8 w-full text-center max-w-2xl mx-auto mt-6">
-        <h2 className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-sky-500 to-blue-700 bg-clip-text text-transparent mb-12 text-center break-words">
+        <h2 className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-sky-500 to-blue-700 bg-clip-text text-transparent pb-3 mb-12 text-center break-words">
         Welcome, {user?.displayName || "User"}
         </h2>
 

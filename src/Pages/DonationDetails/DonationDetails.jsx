@@ -20,7 +20,7 @@ const DonationDetails = () => {
       });
 
     }
-    console.log(itemType);
+    // console.log(itemType);
     const handleSelect=e=>{
       setItemType(e.target.value);
     }

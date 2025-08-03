@@ -38,7 +38,7 @@ const UpdateProfile = () => {
             navigate("/dashboard");
         })
         .catch(error => {
-            console.log("Error updating profile:", error.message);
+            // console.log("Error updating profile:", error.message);
         });
     }
 

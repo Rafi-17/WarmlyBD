@@ -14,7 +14,7 @@ const Login = () => {
   const [typed, setTyped]=useState("");
   const location= useLocation();
   const navigate = useNavigate();
-  console.log(location);
+  // console.log(location);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ const Login = () => {
       navigate(location?.state ? location.state : "/");
     })
     .catch(error=>{
-      console.log("Error", error.message);
+      // console.log("Error", error.message);
       Swal.fire({
         title: 'Error!',
         text: error.message,
@@ -47,7 +47,7 @@ const Login = () => {
   const handleGoogleLogin=()=>{
     googleLogin()
     .then(result=>{
-      console.log(result.user);
+      // console.log(result.user);
       Swal.fire({
         title: "Success!",
         text: "Logged in Successfully",

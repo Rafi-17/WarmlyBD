@@ -82,13 +82,13 @@ const Register = () => {
       navigate("/");
     })
     .catch(error => {
-      console.log("Error updating profile:", error.message);
+      // console.log("Error updating profile:", error.message);
     });
 
     e.target.reset();
   })
   .catch(error => {
-    console.log("Error creating user:", error.message);
+    // console.log("Error creating user:", error.message);
   });
 }
   const handlePassword=e=>{
@@ -97,7 +97,7 @@ const Register = () => {
   const handleGoogleLogin=()=>{
     googleLogin()
     .then(result=>{
-      console.log(result.user);
+      // console.log(result.user);
       Swal.fire({
               title: "Success!",
               text: "Logged in Successfully",
