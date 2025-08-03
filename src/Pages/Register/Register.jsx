@@ -96,8 +96,22 @@ const Register = () => {
   }
   const handleGoogleLogin=()=>{
     googleLogin()
-    .then(result=>console.log(result.user))
-    .catch(error=>console.log("Error",error.message))
+    .then(result=>{
+      console.log(result.user);
+      Swal.fire({
+              title: "Success!",
+              text: "Logged in Successfully",
+              icon: "success",
+              confirmButtonText: "Ok"
+            });
+            navigate(location?.state ? location.state : "/");
+    })
+    .catch(error=>Swal.fire({
+            title: 'Error!',
+            text: error.message,
+            icon: 'error',
+            // confirmButtonText: 'Ok'
+          }))
   }
 
     return (

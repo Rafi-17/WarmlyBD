@@ -9,6 +9,8 @@ import DonationCampaign from "../Pages/DonationCampaign/DonationCampaign/Donatio
 import { path } from "motion/react-client";
 import DonationDetails from "../Pages/DonationDetails/DonationDetails";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import UpdateProfile from "../Pages/UpdateProfile/UpdateProfile";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +37,14 @@ export const router = createBrowserRouter([
           path: "/donation-details/:id",
           element:<PrivateRoute><DonationDetails></DonationDetails></PrivateRoute>,
           loader: ()=>fetch('/donationData.json'),
+        },
+        {
+          path: "/dashboard",
+          element: <Dashboard></Dashboard>
+        },
+        {
+          path: "/updateProfile",
+          element: <UpdateProfile></UpdateProfile>
         }
     ]
   },
