@@ -18,7 +18,7 @@ const Dashboard = () => {
             <img
               src={user.photoURL}
               alt="Profile"
-              className="w-24 h-24 rounded-full object-cover border-4 border-sky-300 shadow-md"
+              className="w-24 h-24 rounded-full object-cover object-top border-4 border-sky-300 shadow-md"
             />
           ) : (
             <div className=" flex items-center justify-center">

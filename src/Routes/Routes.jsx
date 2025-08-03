@@ -11,11 +11,14 @@ import DonationDetails from "../Pages/DonationDetails/DonationDetails";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import UpdateProfile from "../Pages/UpdateProfile/UpdateProfile";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import HowtoHelp from "../Pages/HowtoHelp/HowtoHelp";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
         {
             path:"/",
@@ -40,11 +43,15 @@ export const router = createBrowserRouter([
         },
         {
           path: "/dashboard",
-          element: <Dashboard></Dashboard>
+          element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
         },
         {
           path: "/updateProfile",
-          element: <UpdateProfile></UpdateProfile>
+          element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
+        },
+        {
+          path:"/help",
+          element: <HowtoHelp></HowtoHelp>
         }
     ]
   },

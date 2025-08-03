@@ -28,7 +28,8 @@ const handleLogout=()=>{
       <li><NavLink to="/" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-sky-500  font-bold text-base lg:text-lg" : ""}>Home</NavLink></li>
       <li><NavLink to="/donationCampaigns" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-sky-500 font-bold text-base lg:text-lg" : ""}>Donation Campaigns</NavLink></li>
       <li><NavLink to="/help" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-sky-500 font-bold text-base lg:text-lg" : ""}>How to Help</NavLink></li>
-      <li><NavLink to="/dashboard" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-sky-500 font-bold text-base lg:text-lg" : ""}>Dashboard</NavLink></li>
+      {!user && <li><NavLink to="/register" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-sky-500 font-bold text-base lg:text-lg" : ""}>Register</NavLink></li>}
+      {user && <li><NavLink to="/dashboard" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-sky-500 font-bold text-base lg:text-lg" : ""}>Dashboard</NavLink></li>}
   </>
   return (
   <div className="navbar bg-sky-100 shadow-md">
@@ -59,12 +60,12 @@ const handleLogout=()=>{
         </ul>
       </div>
         <div className="lg:hidden absolute left-1/2 transform -translate-x-1/2">
-  <img className="w-16" src={logo} alt="Logo" />
+  <Link to={'/'}><img className="w-16 cursor-pointer" src={logo} alt="Logo" /></Link>
 </div>
 
 {/* Normal logo position for large screens */}
 <div className="hidden lg:flex items-center">
-  <img className="w-16" src={logo} alt="Logo" />
+  <Link to={'/'}><img className="w-16" src={logo} alt="Logo" /></Link>
 </div>
     </div>
     <div className="navbar-center hidden lg:flex">
@@ -77,11 +78,11 @@ const handleLogout=()=>{
       {user?.photoURL ? (
         <img
           src={user.photoURL}
-          className="w-10 h-10 rounded-full object-cover"
+          className="w-10 h-10 rounded-full object-cover object-top mr-1"
           alt="User"
         />
         ) : (
-      <FaUserCircle className="w-10 h-10 text-gray-400 bg-gray-200 rounded-full p-1" />
+      <FaUserCircle className="w-10 h-10 text-gray-400 bg-gray-200 rounded-full p-1 mr-1" />
 
       )}
       <Link onClick={handleLogout}><CommonButton>Log Out</CommonButton> </Link> 
