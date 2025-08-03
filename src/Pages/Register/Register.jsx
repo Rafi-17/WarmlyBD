@@ -56,10 +56,13 @@ const Register = () => {
     }
     createUser(email, password)
     .then(result => {
-    updateUserProfile({
+      const updateObj = {
       displayName: name,
-      photoURL: photo,
-    })
+    };
+    if (photo.trim() !== "") {
+      updateObj.photoURL = photo;
+    }
+    updateUserProfile(updateObj)
     .then(async () => {
       // Wait for Firebase to reload the user with updated info
       await result.user.reload();
@@ -124,6 +127,7 @@ const Register = () => {
       >
         <input
           className="mb-4 w-full max-w-[300px] py-2 rounded-lg bg-gradient-to-r from-white to-cyan-100 border border-sky-300 placeholder:text-gray-500 px-4 placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-500 transition"
+          required
           placeholder="Name"
           type="text"
           name="name"
@@ -132,6 +136,7 @@ const Register = () => {
         />
         <input
           className="mb-4 w-full max-w-[300px] py-2 rounded-lg bg-gradient-to-r from-white to-cyan-100 border border-sky-300 placeholder:text-gray-500 px-4 placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-500 transition"
+          required
           placeholder="Email"
           type="email"
           name="email"
@@ -149,6 +154,7 @@ const Register = () => {
         <input
           onChange={handlePassword}
           className="mb-4 w-full max-w-[300px] py-2 rounded-lg bg-gradient-to-r from-white to-cyan-100 border border-sky-300 placeholder:text-gray-500 px-4 placeholder:text-sm"
+          required
           placeholder="Password"
           name="password"
           type={`${show?"text" : "password"}`}

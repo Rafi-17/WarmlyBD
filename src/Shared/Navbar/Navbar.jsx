@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import CommonButton from "../../components/CommonButton/CommonButton";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
 const {logoutUser, user} = useContext(AuthContext);
@@ -73,7 +74,16 @@ const handleLogout=()=>{
     </div>
     <div className="navbar-end">
       {user ?<>
-      <img className="w-10 h-10 mr-2 object-cover rounded-full" src={user.photoURL} alt="" />
+      {user?.photoURL ? (
+        <img
+          src={user.photoURL}
+          className="w-10 h-10 rounded-full object-cover"
+          alt="User"
+        />
+        ) : (
+      <FaUserCircle className="w-10 h-10 text-gray-400 bg-gray-200 rounded-full p-1" />
+
+      )}
       <Link onClick={handleLogout}><CommonButton>Log Out</CommonButton> </Link> 
       </> : <Link to={"/login"}><CommonButton>Log In</CommonButton></Link> }
     </div>
