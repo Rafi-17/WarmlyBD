@@ -2,15 +2,18 @@ import React, { useContext, useState } from 'react';
 import loginBg from '../../assets/Login/loginBg.png';
 import { FcGoogle } from "react-icons/fc";
 import { motion } from "motion/react"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TiEye } from "react-icons/ti";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AuthContext } from '../../providers/AuthProvider';
+import Swal from 'sweetalert2';
+import { auth } from '../../firebase.init';
 
 const Register = () => {
   const [show,setShow] = useState(false);
   const [typed, setTyped]=useState("");
   const {createUser, googleLogin, updateUserProfile, setUser}= useContext(AuthContext);
+  const navigate = useNavigate();
 
     const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,22 +21,73 @@ const Register = () => {
     const email = e.target.email.value;
     const photo = e.target.photo.value;
     const password = e.target.password.value;
-    console.log(name,email,photo,password);
+    // console.log(name,email,photo,password);
+    if(!/[A-Z]/.test(password)){
+      return Swal.fire({
+              title: 'Error!',
+              text: "Password must conatin at least one uppercase, one lowercase and minimum length 6",
+              icon: 'error',
+              // confirmButtonText: 'Ok'
+            })
+    }
+    if(!/[a-z]/.test(password)){
+      return Swal.fire({
+              title: 'Error!',
+              text: "Password must conatin at least one uppercase, one lowercase and minimum length 6",
+              icon: 'error',
+              // confirmButtonText: 'Ok'
+            })
+    }
+    if(!/^.{6,}$/.test(password)){
+      return Swal.fire({
+              title: 'Error!',
+              text: "Password must conatin at least one uppercase, one lowercase and minimum length 6",
+              icon: 'error',
+              // confirmButtonText: 'Ok'
+            })
+    }
+    if(!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)){
+      return Swal.fire({
+              title: 'Error!',
+              text: "Password must conatin at least one uppercase, one lowercase and minimum length 6",
+              icon: 'error',
+              // confirmButtonText: 'Ok'
+            })
+    }
     createUser(email, password)
-    .then(result=>{
-      setUser(result.user);
-      updateUserProfile({
-        displayName: name,
-        photoURL: photo
-      })
-      .then(()=>console.log("Profile Updated"))
-      .catch(error=>console.log("Error",error.message))
-      e.target.reset();
+    .then(result => {
+    updateUserProfile({
+      displayName: name,
+      photoURL: photo,
     })
-    .catch(error=>{
-      console.log("Error", error.message);
+    .then(async () => {
+      // Wait for Firebase to reload the user with updated info
+      await result.user.reload();
+      
+      setUser({ ...auth.currentUser });
+
+      // Fetch the updated user from auth
+      // const updatedUser = auth.currentUser;
+
+      // setUser(updatedUser); // ✅ Now this has updated photoURL
+      Swal.fire({
+        title: "Success!",
+        text: "Registered Successfully",
+        icon: "success",
+        confirmButtonText: "Ok"
+      });
+      navigate("/");
     })
-  };
+    .catch(error => {
+      console.log("Error updating profile:", error.message);
+    });
+
+    e.target.reset();
+  })
+  .catch(error => {
+    console.log("Error creating user:", error.message);
+  });
+}
   const handlePassword=e=>{
     setTyped(e.target.value)
   }
@@ -122,6 +176,6 @@ const Register = () => {
       
     </div>
     );
-};
-
-export default Register;
+  };
+  
+  export default Register;

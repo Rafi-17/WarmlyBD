@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import loginBg from '../../assets/Login/loginBg.png';
 import { FcGoogle } from "react-icons/fc";
 import { motion } from "motion/react"
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TiEye } from "react-icons/ti";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -12,7 +12,9 @@ const Login = () => {
   const {loginUser, googleLogin}=useContext(AuthContext);
   const [show,setShow] = useState(false);
   const [typed, setTyped]=useState("");
-  
+  const location= useLocation();
+  const navigate = useNavigate();
+  console.log(location);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,16 +31,37 @@ const Login = () => {
         icon: "success",
         confirmButtonText: "Ok"
       });
+      navigate(location?.state ? location.state : "/");
     })
     .catch(error=>{
       console.log("Error", error.message);
+      Swal.fire({
+        title: 'Error!',
+        text: error.message,
+        icon: 'error',
+        // confirmButtonText: 'Ok'
+      })
     })
   };
 
   const handleGoogleLogin=()=>{
     googleLogin()
-    .then(result=>console.log(result.user))
-    .catch(error=>console.log("Error",error.message))
+    .then(result=>{
+      console.log(result.user);
+      Swal.fire({
+        title: "Success!",
+        text: "Logged in Successfully",
+        icon: "success",
+        confirmButtonText: "Ok"
+      });
+      navigate(location?.state ? location.state : "/");
+    })
+    .catch(error=>Swal.fire({
+        title: 'Error!',
+        text: error.message,
+        icon: 'error',
+        // confirmButtonText: 'Ok'
+      }))
   }
   const handlePassword=e=>{
     setTyped(e.target.value)
